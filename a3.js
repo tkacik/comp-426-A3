@@ -32,8 +32,16 @@ var validateScenario = function(e) {
 	return isValid;
 }
 
-var addScenario = function(e) {
-	alert("TODO: ADDING");
+var addScenario = function(e) {	
+	var scen = $("<tr></tr>");
+	$('#scenario_builder input').each( function(i,e) {
+		if(i < 4)
+			scen.append($("<td></td>").append($(e).val()));
+	});
+	
+	scen.append('<td><input type="submit" value="Remove"></td>');
+
+	$('#scenario_list').append(scen);
 }
 
 var removeScenario = function(e) {
