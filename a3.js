@@ -127,7 +127,7 @@ var runScenario = function(e) {
 
 		scenarios.each(function(i, e) {
 			$("<td></td>").appendTo(HEAD).text(gross[i].toFixed(2));
-			gross[i] = Number(gross[i])*R[i]+Number(S[i]);
+			gross[i] = (Number(gross[i]))*R[i]+Number(S[i]);
 		});
 		y++;
 		HEAD = $("<tr></tr>").appendTo(HEAD.parent());
@@ -138,23 +138,22 @@ var runScenario = function(e) {
 	
 		scenarios.each(function(i, e) {
 			$("<td></td>").appendTo(HEAD).text(gross[i].toFixed(2));
-			gross[i] = Number(gross[i])*G[i]-Number(T[i]);
+			gross[i] = (gross[i]-T[i])*G[i];
 			});
 		y++;
 		HEAD = $("<tr></tr>").appendTo(HEAD.parent());
 	
-	while (y < retirementYears + workingYears) {
+	while (y <= retirementYears + workingYears) {
 		$("<td></td>").text(thisYear + y).appendTo(HEAD);
 
 		scenarios.each(function(i, e) {
 			$("<td></td>").appendTo(HEAD).text(gross[i].toFixed(2));
-			gross[i] = Number(gross[i])*G[i]-Number(T[i]);
+			gross[i] = (gross[i]-T[i])*G[i];
 		});
 		y++;
 		HEAD = $("<tr></tr>").appendTo(HEAD.parent());
 	}
 	
-	alert("TODO: CREATE TABLE");
 	e.preventDefault();
 }
 
