@@ -67,38 +67,101 @@ var runScenario = function(e) {
 	retirementYears = deathAge - retirementAge;
 	
 	alert("TODO: VALIDATE DEMOGRAPHICS");
-	$('#scenario_list tbody tr').each(calculateSaveReq);
+	
+	$('#report_table').find('tr').remove();
+		
+	var scenarios = $("#scenario_list").find('tr');
+	var reports = $("#report_table");
+	
+	var S = new Array(scenarios.length);
+	var R = new Array(scenarios.length);
+	var G = new Array(scenarios.length);
+	var T = new Array(scenarios.length);
+	var n = workingYears;
+	var m = retirementYears;
+	var I = currentSavings;
+	
+	var HEAD = $("<tr></tr>").appendTo(reports.find('thead'));
+	
+	HEAD.append("<td>Year</td>")
+
+	scenarios.each(function(i, e) {
+		$("<td></td>").appendTo(HEAD).text($(e).children().first().text());
+	});
+	
+	HEAD = $("<tr></tr>").appendTo(HEAD.parent());
+	HEAD.append("<td>Annual Savings</td>")
+	
+	scenarios.each(function(i, e) {
+		$(e).children().each(function(j, f) {
+			switch(j){
+				case 1:
+					R[i] = +($(f).text()/100 + 1);
+					break;
+				case 2:
+					G[i] = +($(f).text()/100 + 1);
+					break;
+				case 3:
+					T[i] = +($(f).text());
+					break;
+				default:
+			};
+		});
+				
+		S[i] = ((T[i]*(1-(Math.pow(G[i],m)))/(Math.pow(G[i],m-1))/(1-G[i]))-(I*Math.pow(R[i],n)))*((1-R[i])/(1-Math.pow(R[i],n)));
+
+		$("<td></td>").appendTo(HEAD).text("$" + S[i].toFixed(2));
+	});
+	
+	HEAD = $("<tr></tr>").appendTo(reports.find('tbody'));
+
+	var y = 0;
+	var gross = new Array(scenarios.length);
+	
+	scenarios.each(function(i, e) {
+		gross[i] = +currentSavings;
+	});
+
+	while (y < workingYears) {
+		$("<td></td>").text(thisYear + y).appendTo(HEAD);
+
+		scenarios.each(function(i, e) {
+			$("<td></td>").appendTo(HEAD).text(gross[i].toFixed(2));
+			gross[i] = Number(gross[i])*R[i]+Number(S[i]);
+		});
+		y++;
+		HEAD = $("<tr></tr>").appendTo(HEAD.parent());
+	}
+	
+	HEAD.addClass("retirement");
+		$("<td></td>").text(thisYear + y).appendTo(HEAD);
+	
+		scenarios.each(function(i, e) {
+			$("<td></td>").appendTo(HEAD).text(gross[i].toFixed(2));
+			gross[i] = Number(gross[i])*G[i]-Number(T[i]);
+			});
+		y++;
+		HEAD = $("<tr></tr>").appendTo(HEAD.parent());
+	
+	while (y < retirementYears + workingYears) {
+		$("<td></td>").text(thisYear + y).appendTo(HEAD);
+
+		scenarios.each(function(i, e) {
+			$("<td></td>").appendTo(HEAD).text(gross[i].toFixed(2));
+			gross[i] = Number(gross[i])*G[i]-Number(T[i]);
+		});
+		y++;
+		HEAD = $("<tr></tr>").appendTo(HEAD.parent());
+	}
+	
 	alert("TODO: CREATE TABLE");
 	e.preventDefault();
 }
 
-var calculateSaveReq = function(i, e) {
-	var n = workingYears;
-	var m = retirementYears;
-	var I = currentSavings;
-	var r;
-	var g;
-	var T;
-	$(e).children().each(function(j, f) {
-		switch(j){
-			case 1:
-				r = $(f).text()/100 + 1;
-				break;
-			case 2:
-				g = $(f).text()/100 + 1;
-				break;
-			case 3:
-				T = $(f).text();
-				break;
-			default:
-		};
-	});
-	
-	S = ((T*(1-(Math.pow(g,m)))/(Math.pow(g,m-1))/(1-g))-(I*Math.pow(r,n)))*((1-r)/(1-Math.pow(r,n)));
-	
-	alert(S);
-	//alert("TODO: CALCULATE " + e + i);
-}
-
 //$('#scenario_list').append($("<tr></tr>")).append($("<td></td>").append($('#scenario_builder input[name="scenario_name"]').val()));
 //$('#the_list').append($("<li></li>").append($('#the_form input[name="itemval"]').val())
+
+
+
+
+

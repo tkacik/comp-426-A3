@@ -30,26 +30,26 @@
 			<div>
 				<label>
 					Scenario Name:
-					<input type="text" name="scenario_name" class="scenario">
+					<input type="text" name="scenario_name" class="scenario" value="Scenario 1">
 				</label>				
 				<label>
 					Working Return on Investment:
-					<input type="number" name="working_roi" class="roi">
+					<input type="number" name="working_roi" class="roi" value="5">
 					%
 				</label>
 				<label>
 					Retired Return on Investment:
-					<input type="number" name="retired_roi" class="roi">
+					<input type="number" name="retired_roi" class="roi" value="3">
 					%
 				</label>
 				<label>
 					Desired Retirement Yearly Income: $
-					<input type="number" name="desired_retirement" class="dollar">
+					<input type="number" name="desired_retirement" class="dollar" value="50000">
 				</label>
 				<input id="create_scenario" type="submit" name="create" value="Create Scenario" class="action">
 			</div>
 		</form>
-		<table id="scenario_list">
+		<table>
 			<thead>
 				<tr>
 					<td>Scenario</td>
@@ -66,21 +66,14 @@
 				<col class="dollar">
 				<col class="remove_button">
 			</colgroup>
-			<tbody>
+			<tbody id="scenario_list">
 				<tr>
 					<td>Scenario 1</td>
-					<td>8.5</td>
-					<td>8.5</td>
-					<td>30,000</td>
+					<td>5</td>
+					<td>3</td>
+					<td>50000</td>
 					<td><input type="submit" value="Remove"></td>
 					
-				</tr>
-				<tr>
-					<td>Scenario 2</td>
-					<td>5</td>
-					<td>10</td>
-					<td>30,000</td>
-					<td><input type="submit" value="Remove"></td>
 				</tr>
 			</tbody>
 		</table>
@@ -93,24 +86,24 @@
 			<div>
 				<label>
 					Year of Birth:
-					<input id="year_of_birth" type="number" name="year_of_birth" class="year" value="1950">			
+					<input id="year_of_birth" type="number" name="year_of_birth" class="year" value="1983">			
 				</label>
 				<label>
 					Current Savings: $
-					<input id="current_savings" type="number" name="current_savings" class="dollar" value="000">				
+					<input id="current_savings" type="number" name="current_savings" class="dollar" value="100000">				
 				</label>
 				<label>
 					Retirement Age:
-					<input id="retirement_age" type="number" name="retirement_age" class="age" value="65">
+					<input id="retirement_age" type="number" name="retirement_age" class="age" value="55">
 				</label>
 				<label>
 					Life Expectancy:
-					<input id="life_expectancy" type="number" name="life_expectancy" class="age" value="85">
+					<input id="life_expectancy" type="number" name="life_expectancy" class="age" value="95">
 				</label>
 				<input id="run_scenario" type="submit" name="run" value="Calculate" class="action">				
 			</div>
 		</form>
-		<table class="courseList">
+		<table id="report_table">
 			<colgroup>
 				<col class="year">
 				<col class="scen">
@@ -124,14 +117,14 @@
 					<td>Scenario2</td>
 					<td>Scenario3</td>
 				</tr>
-			</thead>
-			<tbody>
-				<tr id="required_savings">
+				<tr>
 					<td>Required Yearly Savings</td>
 					<td>$5000</td>
 					<td>$4000</td>
 					<td>$10000</td>						
 				</tr>
+			</thead>
+			<tbody>
 				<tr>
 					<td>2013</td>
 					<td>$45000</td>

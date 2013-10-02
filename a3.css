@@ -210,7 +210,7 @@ a {
 }
 
 
-table tr:nth-child(even) {
+tbody tr:nth-child(even) {
 	background-color: #CCCCCC;
 }
 
@@ -286,7 +286,7 @@ label {
 	white-space: nowrap;
 }
 
-#geTable td:nth-child(odd){
+tr.retirement {
 	font-weight: bold;
 }
 
