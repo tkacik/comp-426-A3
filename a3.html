@@ -1,39 +1,160 @@
+
 <!DOCTYPE html>
+<!-- This HTML page created by T. J. Tkacik for Assignment 3 of COMP 426-f13 -->
 <html>
-<!-- HTML5 Validator: http://validator.w3.org -->
+  <head>
+	<meta charset="UTF-8">
+    <title>Tkacik - Assignment 3</title>
+	<link rel="stylesheet" type="text/css" href="a3.css" />
+	<script type="text/javascript" src="http://www.cs.unc.edu/Courses/comp426-f13/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="a3.js"></script>
     
-    
-<head>
-	<title><!-- TITLE HERE --></title>
-	<link rel="stylesheet" type="text/css" href="index.css">
 </head>
-
-
 
 <body>
 <!-- PAGE HEADER -->
 <div id="header_wrap" class="outer">
 	<header class="inner">
+	<h1>Retirement Planner</h1>
 	
 	</header>
 </div>
 
-
 <!-- PAGE BODY -->
 <div id="main_content_wrap" class="outer">
-	<div id="main_content" class="inner">
-	
+
+<div id="scenarios" class="tool inner">
+	<div class="toolHead"><h2>Retirement Scenarios</h2></div>
+	<div class="toolBody">	
+		<form class="searchBar" name="input" action="html_form_action.asp" method="get">
+			<div>
+				<label>
+					Year of Birth:
+					<input type="number" name="year_of_birth" class="year" value="1950">			
+				</label>
+				<label>
+					Current Savings: $
+					<input type="number" name="current_savings" class="dollar" value="000">				
+				</label>
+				<label>
+					Expected Retirement Age:
+					<input type="number" name="retirement_age" class="age" value="65">
+				</label>
+				<label>
+					Life Expectancy:
+					<input type="number" name="life_expectancy" class="age" value="85">
+				</label>
+			</div>
+			<hr>
+			<div>
+				<label>
+					Scenario Name:
+					<input type="text" name="scenario_name" class="scenario">
+				</label>				
+				<label>
+					Working Return on Investment:
+					<input type="number" name="working_roi" class="roi">
+					%
+				</label>
+				<label>
+					Retired Return on Investment:
+					<input type="number" name="retired_roi" class="roi">
+					%
+				</label>
+				<label>
+					Desired Retirement Yearly Income: $
+					<input type="number" name="desired_retirement" class="dollar">
+				</label>
+				<input type="button" name="create" value="Create" class="">
+			</div>
+		</form>
+		<table class="scenarios">
+			<thead>
+				<tr>
+					<td>Scenario</td>
+					<td>Working ROI</td>
+					<td>Retired ROI</td>
+					<td>Retirement</td>
+					<td></td>
+				</tr>
+			</thead>
+			<colgroup>
+				<col class="scenario">
+				<col class="roi">
+				<col class="roi">
+				<col class="dollar">
+				<col class="remove_button">
+			</colgroup>
+			<tbody>
+				<tr>
+					<td>Scenario 1</td>
+					<td>8.5%</td>
+					<td>8.5%</td>
+					<td>$30,000</td>
+					<td><input type="submit" value="Remove"></td>
+					
+				</tr>
+				<tr>
+					<td>Scenario 2</td>
+					<td>5%</td>
+					<td>10%</td>
+					<td>$30,000</td>
+					<td><input type="submit" value="Remove"></td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
+</div>
+<div id="outcomes" class="tool inner">
+	<div class="toolHead"><h2>Scenario Outcomes</h2></div>
+	<div class="toolBody">
+		<table class="courseList">
+			<colgroup>
+				<col class="year">
+				<col class="scen">
+				<col class ="scen">
+				<col class="scen">
+			</colgroup>
+			<thead>
+				<tr>
+					<td>Year</td>
+					<td>Scenario1</td>
+					<td>Scenario2</td>
+					<td>Scenario3</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="required_savings">
+					<td>Required Yearly Savings</td>
+					<td>$5000</td>
+					<td>$4000</td>
+					<td>$10000</td>						
+				</tr>
+				<tr>
+					<td>2013</td>
+					<td>$45000</td>
+					<td>$50000</td>
+					<td>$50000</td>					
+				</tr>
+				<tr>
+					<td>2014</td>
+					<td>$45000</td>
+					<td>$50000</td>
+					<td>$50000</td>					
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
 </div>
 
 
 <!-- PAGE FOOTER -->
 <div id="footer_wrap" class="outer">
-	<footer class="inner">>
+	<footer class="inner">
 	
 	</footer>
 </div>
-
 </body>
-
 </html>

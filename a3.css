@@ -90,6 +90,10 @@ h3 {
 	display: none;
 }
 
+.hide_child * {
+	display: none;
+}
+
 em {
   font-style: italic;
 }
@@ -122,7 +126,7 @@ body {
 
 .inner {
   position: relative;
-  max-width: 640px;
+  max-width: 720px;
   padding-right: 10px;
   padding-left: 10px;
   margin: 0 auto;
@@ -139,6 +143,10 @@ header, footer {
 
 #main_content {
   padding-top: 15px;
+}
+
+#main_content_wrap > div:first-child {
+	padding-top: 15px;
 }
 
 /**************************************
@@ -176,6 +184,125 @@ a {
   transition: text-shadow .5s ease;
   -webkit-transition: background 1s ease;
   -webkit-transition: text-shadow .5s ease;
+}
+
+.toolHead {
+	color: #f2f2f2;
+	background: #212121;
+	
+	transition: color 1s ease;
+	transition: text-shadow .5s ease;
+	-webkit-transition: color 1s ease;
+	-webkit-transition: text-shadow .5s ease;
+}
+
+.toolHead:hover {
+	text-shadow: #bbbbbb 0px 0px 2.0px;
+}
+
+.searchBar {
+	color: #f2f2f2;
+	background: #424242;
+}
+
+#geTable tr:nth-child(odd) td:nth-child(4n-1),
+	#geTable tr:nth-child(odd) td:nth-child(4n),
+	#geTable tr:nth-child(even) td:nth-child(4n-2),
+	#geTable tr:nth-child(even) td:nth-child(4n-3) {
+	background-color: #CCCCCC;
+}
+
+table tr:nth-child(even) {
+	background-color: #CCCCCC;
+}
+
+tbody tr:hover {
+	background-color: #AAAAAA;
+}
+
+table caption, table thead {
+	background-color: #BBBBBB;
+	font-weight: bold;
+}
+
+/**************************************
+Content Formatting CSS
+**************************************/
+
+table {
+	width: 100%;
+}
+
+table td {
+	text-align: center;
+}
+
+.toolHead {
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;	
+}
+
+.toolHead * {
+	padding-left: 15px;
+}
+
+div.toolBody {
+	border-bottom: 1px solid #424242;
+	border-left: 1px solid #424242;
+	border-right: 1px solid #424242;
+}
+
+form {
+	padding: 5px;
+}
+
+.searchBar > div > * {
+	margin: 3px;
+}
+
+.scenario {
+	width: 6em;	
+}
+
+.year {
+	width: 3em;
+}
+
+.dollar {
+	width: 5em;
+}
+
+.age {
+	width: 2em;
+}
+
+.roi {
+	width: 5em;
+}
+
+.remove_button {
+	width: 4em;
+}
+
+label {
+	white-space: nowrap;
+}
+
+#geTable td:nth-child(odd){
+	font-weight: bold;
+}
+
+.course {
+	width: 5em;
+}
+.submit {
+	float: right;
+}
+
+caption {
+	text-align: left;
+	padding-left: 15px;
+	font-weight: bold;
 }
 
 
