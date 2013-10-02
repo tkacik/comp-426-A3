@@ -126,7 +126,7 @@ body {
 
 .inner {
   position: relative;
-  max-width: 720px;
+  max-width: 860px;
   padding-right: 10px;
   padding-left: 10px;
   margin: 0 auto;
@@ -147,6 +147,10 @@ header, footer {
 
 #main_content_wrap > div:first-child {
 	padding-top: 15px;
+}
+
+form {
+	overflow: auto;
 }
 
 /**************************************
@@ -170,7 +174,7 @@ Coloring CSS
   text-shadow: #81BEE9 0px 0px 1.5px;
 }
 
-#header_wrap a:hover, #footer_wrap a:hover, #main_content_wrap .searchBar a:hover {
+#header_wrap a:hover, #footer_wrap a:hover, #main_content_wrap .actionBar a:hover {
   color: #56A0D3;
   text-shadow: #9DCAE9 0px 0px 1.5px;
 }
@@ -200,17 +204,11 @@ a {
 	text-shadow: #bbbbbb 0px 0px 2.0px;
 }
 
-.searchBar {
+.actionBar {
 	color: #f2f2f2;
 	background: #424242;
 }
 
-#geTable tr:nth-child(odd) td:nth-child(4n-1),
-	#geTable tr:nth-child(odd) td:nth-child(4n),
-	#geTable tr:nth-child(even) td:nth-child(4n-2),
-	#geTable tr:nth-child(even) td:nth-child(4n-3) {
-	background-color: #CCCCCC;
-}
 
 table tr:nth-child(even) {
 	background-color: #CCCCCC;
@@ -256,7 +254,7 @@ form {
 	padding: 5px;
 }
 
-.searchBar > div > * {
+.actionBar > div > * {
 	margin: 3px;
 }
 
@@ -303,6 +301,10 @@ caption {
 	text-align: left;
 	padding-left: 15px;
 	font-weight: bold;
+}
+
+input.action {
+	float: right;
 }
 
 

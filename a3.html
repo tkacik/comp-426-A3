@@ -26,26 +26,7 @@
 <div id="scenarios" class="tool inner">
 	<div class="toolHead"><h2>Retirement Scenarios</h2></div>
 	<div class="toolBody">	
-		<form class="searchBar" name="input" action="html_form_action.asp" method="get">
-			<div>
-				<label>
-					Year of Birth:
-					<input type="number" name="year_of_birth" class="year" value="1950">			
-				</label>
-				<label>
-					Current Savings: $
-					<input type="number" name="current_savings" class="dollar" value="000">				
-				</label>
-				<label>
-					Expected Retirement Age:
-					<input type="number" name="retirement_age" class="age" value="65">
-				</label>
-				<label>
-					Life Expectancy:
-					<input type="number" name="life_expectancy" class="age" value="85">
-				</label>
-			</div>
-			<hr>
+		<form id="scenario_builder" class="actionBar" name="scenario_builder">
 			<div>
 				<label>
 					Scenario Name:
@@ -65,10 +46,10 @@
 					Desired Retirement Yearly Income: $
 					<input type="number" name="desired_retirement" class="dollar">
 				</label>
-				<input type="button" name="create" value="Create" class="">
+				<input id="create_scenario" type="submit" name="create" value="Create Scenario" class="action">
 			</div>
 		</form>
-		<table class="scenarios">
+		<table id="scenario_list">
 			<thead>
 				<tr>
 					<td>Scenario</td>
@@ -108,6 +89,27 @@
 <div id="outcomes" class="tool inner">
 	<div class="toolHead"><h2>Scenario Outcomes</h2></div>
 	<div class="toolBody">
+		<form id="demographics" class="actionBar" name="demographics">
+			<div>
+				<label>
+					Year of Birth:
+					<input type="number" name="year_of_birth" class="year" value="1950">			
+				</label>
+				<label>
+					Current Savings: $
+					<input type="number" name="current_savings" class="dollar" value="000">				
+				</label>
+				<label>
+					Expected Retirement Age:
+					<input type="number" name="retirement_age" class="age" value="65">
+				</label>
+				<label>
+					Life Expectancy:
+					<input type="number" name="life_expectancy" class="age" value="85">
+				</label>
+				<input id="run_scenario" type="submit" name="run" value="Calculate" class="action">				
+			</div>
+		</form>
 		<table class="courseList">
 			<colgroup>
 				<col class="year">
