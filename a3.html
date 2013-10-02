@@ -53,9 +53,9 @@
 			<thead>
 				<tr>
 					<td>Scenario</td>
-					<td>Working ROI</td>
-					<td>Retired ROI</td>
-					<td>Retirement</td>
+					<td>Working ROI (%)</td>
+					<td>Retired ROI (%)</td>
+					<td>Retirement ($)</td>
 					<td></td>
 				</tr>
 			</thead>
@@ -69,17 +69,17 @@
 			<tbody>
 				<tr>
 					<td>Scenario 1</td>
-					<td>8.5%</td>
-					<td>8.5%</td>
-					<td>$30,000</td>
+					<td>8.5</td>
+					<td>8.5</td>
+					<td>30,000</td>
 					<td><input type="submit" value="Remove"></td>
 					
 				</tr>
 				<tr>
 					<td>Scenario 2</td>
-					<td>5%</td>
-					<td>10%</td>
-					<td>$30,000</td>
+					<td>5</td>
+					<td>10</td>
+					<td>30,000</td>
 					<td><input type="submit" value="Remove"></td>
 				</tr>
 			</tbody>
@@ -93,19 +93,19 @@
 			<div>
 				<label>
 					Year of Birth:
-					<input type="number" name="year_of_birth" class="year" value="1950">			
+					<input id="year_of_birth" type="number" name="year_of_birth" class="year" value="1950">			
 				</label>
 				<label>
 					Current Savings: $
-					<input type="number" name="current_savings" class="dollar" value="000">				
+					<input id="current_savings" type="number" name="current_savings" class="dollar" value="000">				
 				</label>
 				<label>
-					Expected Retirement Age:
-					<input type="number" name="retirement_age" class="age" value="65">
+					Retirement Age:
+					<input id="retirement_age" type="number" name="retirement_age" class="age" value="65">
 				</label>
 				<label>
 					Life Expectancy:
-					<input type="number" name="life_expectancy" class="age" value="85">
+					<input id="life_expectancy" type="number" name="life_expectancy" class="age" value="85">
 				</label>
 				<input id="run_scenario" type="submit" name="run" value="Calculate" class="action">				
 			</div>
