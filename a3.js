@@ -45,7 +45,7 @@ var addScenario = function(e) {
 }
 
 var removeScenario = function(e) {
-	alert("TODO: REMOVING");
+	$(this).parent().parent().remove();
 	e.preventDefault();
 }
 
