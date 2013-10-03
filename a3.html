@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<!-- This HTML page created by T. J. Tkacik for Assignment 3 of COMP 426-f13 -->
+<html>
+  <head>
+	<meta charset="UTF-8">
+    <title>Tkacik - Assignment 3</title>
+	<link rel="stylesheet" type="text/css" href="a3.css" />
+	<script type="text/javascript" src="http://www.cs.unc.edu/Courses/comp426-f13/jquery-1.10.2.js"></script>
+	<script type="text/javascript" src="a3.js"></script>
+    
+</head>
+
+<body>
+<!-- PAGE HEADER -->
+<div id="header_wrap" class="outer">
+	<header class="inner">
+	<h1>Retirement Planner</h1>
+	
+	</header>
+</div>
+
+<!-- PAGE BODY -->
+<div id="main_content_wrap" class="outer">
+
+<div id="scenarios" class="tool inner">
+	<div class="toolHead"><h2>Retirement Scenarios</h2></div>
+	<div class="toolBody">	
+		<form id="scenario_builder" class="actionBar" name="scenario_builder">
+			<div>
+				<label>
+					Scenario Name:
+					<input type="text" id="scenario_name" class="scenario" value="Scenario 1">
+				</label>				
+				<label>
+					Working ROI:
+					<input type="number" id="working_roi" class="roi" value="5">
+					%
+				</label>
+				<label>
+					Retired ROI:
+					<input type="number" id="retired_roi" class="roi" value="3">
+					%
+				</label>
+				<label>
+					Retirement Income: $
+					<input type="number" id="desired_retirement" class="dollar" value="50000">
+				</label>
+				<input id="create_scenario" type="submit" name="create" value="Create Scenario" class="action">
+			</div>
+		</form>
+		<table>
+			<colgroup>
+				<col class="scenario">
+				<col class="roi">
+				<col class="roi">
+				<col class="dollar">
+				<col class="remove_button">
+			</colgroup>
+			<thead class="hidden">
+				<tr>
+					<td>Scenario</td>
+					<td>Working ROI (%)</td>
+					<td>Retired ROI (%)</td>
+					<td>Retirement ($/yr)</td>
+					<td></td>
+				</tr>
+			</thead>
+			<tbody id="scenario_list">
+			</tbody>
+		</table>
+	</div>
+</div>
+<div id="outcomes" class="tool inner">
+	<div class="toolHead"><h2>Scenario Outcomes</h2></div>
+	<div class="toolBody">
+		<form id="demographics" class="actionBar" name="demographics">
+			<div>
+				<label>
+					Year of Birth:
+					<input id="year_of_birth" type="number" name="year_of_birth" class="year" value="1983">			
+				</label>
+				<label>
+					Current Savings: $
+					<input id="current_savings" type="number" name="current_savings" class="dollar" value="100000">				
+				</label>
+				<label>
+					Retirement Age:
+					<input id="retirement_age" type="number" name="retirement_age" class="age" value="55">
+				</label>
+				<label>
+					Life Expectancy:
+					<input id="life_expectancy" type="number" name="life_expectancy" class="age" value="95">
+				</label>
+				<input id="run_scenario" type="submit" name="run" value="Calculate" class="action">				
+			</div>
+		</form>
+		<table id="report_table">
+			<colgroup>
+				<col class="col_year">
+			</colgroup>
+			<thead>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+</div>
+
+
+<!-- PAGE FOOTER -->
+<div id="footer_wrap" class="outer">
+	<footer class="inner">
+	
+	</footer>
+</div>
+</body>
+</html>
