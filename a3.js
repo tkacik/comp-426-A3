@@ -15,6 +15,7 @@ var retirementAge;
 var deathAge;
 var workingYears;
 var retirementYears;
+var scenarioCount = 1;
 
 $(document).ready(function () {
 	
@@ -77,6 +78,8 @@ var addScenario = function(e) {
 	$('#scenario_list').append(scen);
 	
 	$('#scenario_list').prev().removeClass("hidden");
+	
+	$('#scenario_name').val("Scenario " + ++scenarioCount);
 
 }
 
