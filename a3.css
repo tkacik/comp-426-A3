@@ -209,6 +209,10 @@ a {
 	background: #424242;
 }
 
+input.invalid {
+	color: red;
+	font-weight: bold;
+}
 
 tbody tr:nth-child(even) {
 	background-color: #CCCCCC;

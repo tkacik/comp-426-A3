@@ -66,99 +66,132 @@ var runScenario = function(e) {
 	workingYears = retirementAge - (thisYear - yearOfBirth);
 	retirementYears = deathAge - retirementAge;
 	
-	alert("TODO: VALIDATE DEMOGRAPHICS");
-	
-	$('#report_table').find('tr').remove();
-		
 	var scenarios = $("#scenario_list").find('tr');
 	var reports = $("#report_table");
 	
-	var S = new Array(scenarios.length);
-	var R = new Array(scenarios.length);
-	var G = new Array(scenarios.length);
-	var T = new Array(scenarios.length);
-	var n = workingYears;
-	var m = retirementYears;
-	var I = currentSavings;
-	
+	reports.find('tr').remove();
 	var HEAD = $("<tr></tr>").appendTo(reports.find('thead'));
 	
-	HEAD.append("<td>Year</td>")
+	var validation = validateDemographics(yearOfBirth, currentSavings, retirementAge, deathAge);
+	if (validation[0]) {
 
-	scenarios.each(function(i, e) {
-		$("<td></td>").appendTo(HEAD).text($(e).children().first().text());
-	});
+		
+		var S = new Array(scenarios.length);
+		var R = new Array(scenarios.length);
+		var G = new Array(scenarios.length);
+		var T = new Array(scenarios.length);
+		var n = workingYears;
+		var m = retirementYears;
+		var I = currentSavings;
+		
+		HEAD.append("<td>Year</td>")
 	
-	HEAD = $("<tr></tr>").appendTo(HEAD.parent());
-	HEAD.append("<td>Annual Savings</td>")
-	
-	scenarios.each(function(i, e) {
-		$(e).children().each(function(j, f) {
-			switch(j){
-				case 1:
-					R[i] = +($(f).text()/100 + 1);
-					break;
-				case 2:
-					G[i] = +($(f).text()/100 + 1);
-					break;
-				case 3:
-					T[i] = +($(f).text());
-					break;
-				default:
-			};
-		});
-				
-		S[i] = ((T[i]*(1-(Math.pow(G[i],m)))/(Math.pow(G[i],m-1))/(1-G[i]))-(I*Math.pow(R[i],n)))*((1-R[i])/(1-Math.pow(R[i],n)));
-
-		$("<td></td>").appendTo(HEAD).text("$" + S[i].toFixed(2));
-	});
-	
-	HEAD = $("<tr></tr>").appendTo(reports.find('tbody'));
-
-	var y = 0;
-	var gross = new Array(scenarios.length);
-	
-	scenarios.each(function(i, e) {
-		gross[i] = +currentSavings;
-	});
-
-	while (y < workingYears) {
-		$("<td></td>").text(thisYear + y).appendTo(HEAD);
-
 		scenarios.each(function(i, e) {
-			$("<td></td>").appendTo(HEAD).text(gross[i].toFixed(2));
-			gross[i] = (Number(gross[i]))*R[i]+Number(S[i]);
+			$("<td></td>").appendTo(HEAD).text($(e).children().first().text());
 		});
-		y++;
+		
 		HEAD = $("<tr></tr>").appendTo(HEAD.parent());
-	}
-	
-	HEAD.addClass("retirement");
-		$("<td></td>").text(thisYear + y).appendTo(HEAD);
-	
+		HEAD.append("<td>Annual Savings</td>")
+		
 		scenarios.each(function(i, e) {
-			$("<td></td>").appendTo(HEAD).text(gross[i].toFixed(2));
-			gross[i] = (gross[i]-T[i])*G[i];
+			$(e).children().each(function(j, f) {
+				switch(j){
+					case 1:
+						R[i] = +($(f).text()/100 + 1);
+						break;
+					case 2:
+						G[i] = +($(f).text()/100 + 1);
+						break;
+					case 3:
+						T[i] = +($(f).text());
+						break;
+					default:
+				};
 			});
-		y++;
-		HEAD = $("<tr></tr>").appendTo(HEAD.parent());
+					
+			S[i] = ((T[i]*(1-(Math.pow(G[i],m)))/(Math.pow(G[i],m-1))/(1-G[i]))-(I*Math.pow(R[i],n)))*((1-R[i])/(1-Math.pow(R[i],n)));
 	
-	while (y <= retirementYears + workingYears) {
-		$("<td></td>").text(thisYear + y).appendTo(HEAD);
-
-		scenarios.each(function(i, e) {
-			$("<td></td>").appendTo(HEAD).text(gross[i].toFixed(2));
-			gross[i] = (gross[i]-T[i])*G[i];
+			$("<td></td>").appendTo(HEAD).text("$" + S[i].toFixed(2));
 		});
-		y++;
-		HEAD = $("<tr></tr>").appendTo(HEAD.parent());
-	}
+		
+		HEAD = $("<tr></tr>").appendTo(reports.find('tbody'));
 	
+		var y = 0;
+		var gross = new Array(scenarios.length);
+		
+		scenarios.each(function(i, e) {
+			gross[i] = +currentSavings;
+		});
+	
+		while (y < workingYears) {
+			$("<td></td>").text(thisYear + y).appendTo(HEAD);
+	
+			scenarios.each(function(i, e) {
+				$("<td></td>").appendTo(HEAD).text("$" + gross[i].toFixed(2));
+				gross[i] = (Number(gross[i]))*R[i]+Number(S[i]);
+			});
+			y++;
+			HEAD = $("<tr></tr>").appendTo(HEAD.parent());
+		}
+		
+		HEAD.addClass("retirement");
+			$("<td></td>").text(thisYear + y).appendTo(HEAD);
+		
+			scenarios.each(function(i, e) {
+				$("<td></td>").appendTo(HEAD).text("$" + gross[i].toFixed(2));
+				gross[i] = (gross[i]-T[i])*G[i];
+				});
+			y++;
+			HEAD = $("<tr></tr>").appendTo(HEAD.parent());
+		
+		while (y <= retirementYears + workingYears) {
+			$("<td></td>").text(thisYear + y).appendTo(HEAD);
+	
+			scenarios.each(function(i, e) {
+				$("<td></td>").appendTo(HEAD).text("$" + gross[i].toFixed(2));
+				gross[i] = (gross[i]-T[i])*G[i];
+			});
+			y++;
+			HEAD = $("<tr></tr>").appendTo(HEAD.parent());
+		}
+	}
+	else {
+		$("<td></td>").text(validation[1]).appendTo(HEAD);
+	}
 	e.preventDefault();
 }
 
-//$('#scenario_list').append($("<tr></tr>")).append($("<td></td>").append($('#scenario_builder input[name="scenario_name"]').val()));
-//$('#the_list').append($("<li></li>").append($('#the_form input[name="itemval"]').val())
+var validateDemographics = function(yearOfBirth, currentSavings, retirementAge, deathAge) {
+	var flag = true;
+	var message = "";
+	
+	if (isNaN(yearOfBirth) || yearOfBirth < 0 || yearOfBirth > thisYear) {
+		$('#year_of_birth').addClass("invalid");
+		flag = false;
+		message += "Invalid birth year. ";
+	} else {$('#year_of_birth').removeClass("invalid");}
+	
+	if (isNaN(currentSavings)) {
+		$('#current_savings').addClass("invalid");
+		flag = false;
+		message += "Invalid savings. ";
+	} else {$('#current_savings').removeClass("invalid");}
+	
+	if (isNaN(retirementAge) || yearOfBirth < thisYear - retirementAge + 1) {
+		$('#retirement_age').addClass("invalid");
+		flag = false;
+		message += "Invalid retirement age. ";
+	} else {$('#retirement_age').removeClass("invalid");}
+	
+	if (isNaN(deathAge) || deathAge <= retirementAge) {
+		$('#life_expectancy').addClass("invalid");
+		flag = false;
+		message += "Invalid life expectancy. ";
+	} else {$('#life_expectancy').removeClass("invalid");}
+	
+	return new Array (flag, message);
+}
+
 
 
 
