@@ -75,10 +75,17 @@ var addScenario = function(e) {
 	scen.append('<td><input type="submit" value="Remove"></td>');
 
 	$('#scenario_list').append(scen);
+	
+	$('#scenario_list').prev().removeClass("hidden");
+
 }
 
 var removeScenario = function(e) {
 	$(this).parent().parent().remove();
+	
+	if($('#scenario_list').children().length == 0) {
+		$('#scenario_list').prev().addClass("hidden");
+	}
 	e.preventDefault();
 }
 
@@ -115,7 +122,7 @@ var runScenario = function(e) {
 		});
 		
 		HEAD = $("<tr></tr>").appendTo(HEAD.parent());
-		HEAD.append("<td>Annual Savings</td>")
+		HEAD.append("<td>(Annual Savings)</td>")
 		
 		scenarios.each(function(i, e) {
 			$(e).children().each(function(j, f) {
@@ -135,7 +142,7 @@ var runScenario = function(e) {
 					
 			S[i] = ((T[i]*(1-(Math.pow(G[i],m)))/(Math.pow(G[i],m-1))/(1-G[i]))-(I*Math.pow(R[i],n)))*((1-R[i])/(1-Math.pow(R[i],n)));
 	
-			$("<td></td>").appendTo(HEAD).text("$" + S[i].toFixed(2));
+			$("<td></td>").appendTo(HEAD).text("($" + S[i].toFixed(2) + "/yr)");
 		});
 		
 		HEAD = $("<tr></tr>").appendTo(reports.find('tbody'));

@@ -126,7 +126,7 @@ body {
 
 .inner {
   position: relative;
-  max-width: 860px;
+  max-width: 950px;
   padding-right: 10px;
   padding-left: 10px;
   margin: 0 auto;
@@ -271,6 +271,10 @@ form {
 
 .roi {
 	width: 5em;
+}
+
+.col_year {
+	width: 10em;
 }
 
 .remove_button {
