@@ -220,6 +220,11 @@ var validateDemographics = function(yearOfBirth, currentSavings, retirementAge, 
 		message += "Invalid life expectancy. ";
 	} else {$('#life_expectancy').removeClass("invalid");}
 	
+	if($('#scenario_list').children().length == 0){
+		flag = false;
+		message += "You must create at least one scenario. "
+	}
+	
 	return new Array (flag, message);
 }
 
