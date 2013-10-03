@@ -34,11 +34,35 @@ var buildScenario = function(e) {
 }
 
 var validateScenario = function(e) {
+	var flag = true;
+	var message = "";
+	if (!$.trim($('#scenario_name').val()).length) {
+		$('#scenario_name').addClass("invalid");
+		flag = false;
+		message += "Invalid scenario name. ";
+	} else {$('#scenario_name').removeClass("invalid");}
 	
-	var isValid = false;
-	alert("TODO: VALIDATION");
-	isValid = true;
-	return isValid;
+	if (isNaN($('#working_roi').val()) || $('#working_roi').val() <= 0 ) {
+		$('#working_roi').addClass("invalid");
+		flag = false;
+		message += "Invalid return on investment while working. ";
+	} else {$('#working_roi').removeClass("invalid");}
+
+	if (isNaN($('#retired_roi').val()) || $('#retired_roi').val() <= 0 ) {
+		$('#retired_roi').addClass("invalid");
+		flag = false;
+		message += "Invalid return on investment while retired. ";
+	} else {$('#retired_roi').removeClass("invalid");}
+
+	if (isNaN($('#desired_retirement').val()) || $('#desired_retirement').val() <= 0 ) {
+		$('#desired_retirement').addClass("invalid");
+		flag = false;
+		message += "Invalid retirement income. ";
+	} else {$('#desired_retirement').removeClass("invalid");}
+	
+	if (!flag) alert(message);
+	
+	return flag;
 }
 
 var addScenario = function(e) {	

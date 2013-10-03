@@ -192,16 +192,7 @@ a {
 
 .toolHead {
 	color: #f2f2f2;
-	background: #212121;
-	
-	transition: color 1s ease;
-	transition: text-shadow .5s ease;
-	-webkit-transition: color 1s ease;
-	-webkit-transition: text-shadow .5s ease;
-}
-
-.toolHead:hover {
-	text-shadow: #bbbbbb 0px 0px 2.0px;
+	background: #212121;	
 }
 
 .actionBar {
